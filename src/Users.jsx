@@ -20,8 +20,11 @@ function Users() {
 
                 console.log(response)
 
-                setUsers()
-            } catch ()
+                setUsers(response.data)
+            } catch (e) {
+                setError(e)
+            }
+            setLoading(false)
         }
         fetchUser()
     },[]);
@@ -32,7 +35,7 @@ function Users() {
 
     return (
         <ul>
-            {users.map((users) => (
+            {users.map((user) => (
                 <li key={user.id}>
                     {user.username}---({user.name})
                 </li>
